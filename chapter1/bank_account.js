@@ -3,8 +3,9 @@ let saldo = 0;
 const tambahSaldo = function () {
   input = window.prompt("Berapa jumlah yang ingin kamu simpan?");
   saldo += parseInt(input);
-  window.alert("Saldo berhasil ditambah!")
-  document.querySelector(".saldo").textContent = "Rp"+Intl.NumberFormat("id-ID").format(saldo);
+  window.alert("Saldo berhasil ditambah!");
+  document.querySelector(".saldo").textContent =
+    "Rp" + Intl.NumberFormat("id-ID").format(saldo);
 };
 
 const kurangiSaldo = function () {
@@ -13,9 +14,10 @@ const kurangiSaldo = function () {
     window.alert("Tabungan kamu kurang!");
   } else {
     saldo -= parseInt(input);
+    window.alert("Saldo berhasil dikurangi!");
   }
-  window.alert("Saldo berhasil dikurangi!")
-  document.querySelector(".saldo").textContent = "Rp"+Intl.NumberFormat("id-ID").format(saldo);
+  document.querySelector(".saldo").textContent =
+    "Rp" + Intl.NumberFormat("id-ID").format(saldo);
 };
 
 document.querySelector(".tambah").onclick = tambahSaldo;
