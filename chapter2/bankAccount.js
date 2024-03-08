@@ -12,8 +12,8 @@ class BankAccount {
       }
       this.#updateBalance(input);
       window.alert("Transaction is on process!");
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      window.alert(`Transaction is done!\nYour new balance is: ${this.#balance}`);
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      window.alert(`Transaction is done!\nYour new balance is: Rp${Intl.NumberFormat("id-ID").format(this.#balance)}`);
     }
   
     async withdraw(input) {
@@ -27,14 +27,14 @@ class BankAccount {
       }
       this.#balance -= input;
       window.alert("Transaction is on process!");
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      window.alert(`Transaction is done!\nYour new balance is: ${this.#balance}`);
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      window.alert(`Transaction is done!\nYour new balance is: Rp${Intl.NumberFormat("id-ID").format(this.#balance)}`);
     }
   
     async check() {
       window.alert("Please wait...");
-      await new Promise((resolve) => setTimeout(resolve, 2500));
-      window.alert(`Your balance is: ${this.#balance}`);
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      window.alert(`Your balance is: Rp${Intl.NumberFormat("id-ID").format(this.#balance)}`);
     }
   }
   
@@ -44,7 +44,7 @@ class BankAccount {
   
     while (isOnProcess) {
       input = window.prompt(
-        "What do you want to do?\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit",
+        "Hello, What do you want to do?\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit",
       );
       switch (input) {
         case "1":
@@ -63,7 +63,7 @@ class BankAccount {
           isOnProcess = false;
           break;
         default:
-          window.alert("Invalid input!");
+          window.alert("Invalid menu!");
           break;
       }
     }
