@@ -28,6 +28,7 @@ CREATE TABLE transactions(
     name VARCHAR(255) NOT NULL,
     type VARCHAR(255) NOT NULL,
     amount DECIMAL(15,2) NOT NULL,
+    createdAt DATE NOT NULL DEFAULT NOW(),
     accountNumber VARCHAR(18) NOT NULL,
     FOREIGN KEY (accountNumber) REFERENCES accounts(accountNumber)
 );
@@ -63,11 +64,14 @@ SELECT * FROM customers;
 SELECT * FROM accounts;
 SELECT * FROM transactions;
 
+SELECT accounts.*, customers.name FROM accounts INNER JOIN customers ON accounts.customerid=customers.id;
+SELECT * FROM transactions WHERE amount > 100000;
+
 --Update
 UPDATE customers SET name = 'Mirza Hafiz' WHERE id = 1;
 UPDATE accounts SET balance = balance + 5000000 WHERE accountNumber = '123456789101120';
 UPDATE transactions SET type = 'Credit' WHERE id = 20;
 
 --Delete
-DELETE FROM transactions WHERE id = 13;
+DELETE FROM transactions WHERE id = 3;
 DELETE FROM accounts WHERE accountNumber = '123456789101120';
