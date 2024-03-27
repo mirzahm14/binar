@@ -1,0 +1,38 @@
+generator client{
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url = env("DB_URL")
+}
+
+model Users {
+    id Int @id @default(autoincrement())
+    name String
+    email String @unique
+    password String
+}
+
+model Bank_Accounts {
+    id Int @id @default(autoincrement())
+    bank_name String
+    bank_account_number String
+    balance Decimal @db.Decimal(10,2)
+    user_id Int
+}
+
+model Transactions {
+    id Int @id @default(autoincrement())
+    source_account_id Int
+    destination_account_id Int
+    amount Decimal @db.Decimal(10,2)
+}
+
+model Profiles {
+    id Int @id @default(autoincrement())
+    identity_type String
+    identity_number String
+    address String
+    user_id Int @unique
+}
