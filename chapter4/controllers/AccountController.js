@@ -52,31 +52,30 @@ const getAllAccounts = async (req,res) => {
 const getAccountById = async (req,res) => {
     try {
         const account = await prisma.bank_Accounts.findUnique({
-            where:{
-                id: Number(req.params.id)
+            where: {
+              id: Number(req.params.id)
             },
-        })
+            select: {
+              id: true,
+              bank_name: true,
+              bank_account_number: true,
+              balance: true,
+              user: {
+                select: {
+                  id: true,
+                  name: true,
+                  email: true
+                }
+              }
+            }
+          });
 
         if(!account){
             res.status(404).json({message: "Not found"})
             return
         }
 
-        const {user_id, ...restAccount} = account
-
-        const user = await prisma.users.findUnique({
-            where:{
-                id: user_id
-            },
-            select:{
-                id: true,
-                name: true,
-                email: true
-            }
-        })
-
-        const result = {...restAccount, user}
-        res.status(200).json({message: "Success", data: result});
+        res.status(200).json({message: "Success", data: {...account}});
     } catch (error) {
         res.status(500).json({message: "Internal server error", data: error.message})
     }

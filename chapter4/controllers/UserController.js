@@ -66,30 +66,26 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req,res) => {
     try {
         const user = await prisma.users.findUnique({
-          where:{
+          where: {
             id: Number(req.params.id)
+          },
+          include: {
+            profile: {
+              select: {
+                identity_type: true,
+                identity_number: true,
+                address: true
+              }
+            }
           }
-        })
+        });
 
         if(!user){
           res.status(404).json({message: "Not found"})
           return
         }
 
-        const profile = await prisma.profiles.findUnique({
-          where:{
-            user_id: user.id
-          },
-          select:{
-            identity_type: true,
-            identity_number: true,
-            address: true
-          }
-        })
-
-        const result = {...user, profile}
-
-        res.status(200).json({message: "Success", data: result});
+        res.status(200).json({message: "Success", data: {...user}});
     } catch (error) {
         res.status(500).json({message: "Internal server error", data: error.message});
     }
