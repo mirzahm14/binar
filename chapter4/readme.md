@@ -1,4 +1,4 @@
-### Chapter 4 - Prisma
+### Chapter 4 - Prisma & Express
 
 #### 1. Setup Database
 
