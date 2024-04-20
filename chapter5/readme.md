@@ -1,4 +1,4 @@
-### Chapter 4 - Prisma & Express
+### Chapter 5 - API Docs, Testing, and Authentication
 
 #### 1. Setup Database
 
