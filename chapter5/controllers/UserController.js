@@ -12,7 +12,7 @@ const createUser = async (req, res) => {
     const users = await prisma.users.findMany()
     const isEmailExist = users.filter(user => user.email === email)
     if(isEmailExist.length > 0) {
-      res.status(404).json({message: "Email already exist"})
+      res.status(400).json({message: "Email already exist"})
       return
     }
 
