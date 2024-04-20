@@ -24,7 +24,7 @@ cp .env.example .env
 npx prisma generate
 ```
 
-#### 5. Migrate the database
+#### 5. Migrating and seeding data to the database
 
 ```bash
 npx prisma migrate dev

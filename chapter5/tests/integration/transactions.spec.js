@@ -10,7 +10,7 @@ describe("POST create a transaction /transactions", () => {
     //dummy transaction
     let { source_account_id, destination_account_id, amount } = {
         source_account_id: 1,
-        destination_account_id: 3,
+        destination_account_id: 2,
         amount: 3000,
     };
 

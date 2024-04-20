@@ -10,7 +10,7 @@ describe("POST create an account /accounts", () => {
     //dummy account
     let { bank_name, bank_account_number, balance, user_id } = {
         bank_name: "bca",
-        bank_account_number: "1234567890",
+        bank_account_number: "12345678765",
         balance: 1000,
         user_id: 1,
     };
